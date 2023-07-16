@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Page</title>
+    <!-- Load TailwindCSS styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="justify-center items-center bg-gray-100">
+    <!-- Responsive navbar -->
+    {% include 'main/navbar.html' %} {% if error %}
+    <div
+      class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+      role="alert"
+    >
+      <strong class="font-bold">Error!</strong>
+      <span class="block sm:inline">{{ error }}</span>
+      <span class="absolute top-0 bottom-0 right-0 px-4 py-3"> </span>
+    </div>
+    {% endif %}
+
+    <div class="h-screen">
+      <div class="flex justify-center items-center h-1/2">
+        <div
+          class="w-full max-w-md p-6 bg-white rounded-md shadow-md h-[300px]"
+        >
+          <h1 class="text-3xl font-bold mb-4 text-center mt-6">
+            Upload a File
+          </h1>
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-4">
+              <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-5"
+                id="excel_file"
+                type="file"
+                name="excel_file"
+                required
+              />
+            </div>
+            <div class="text-center mt-4">
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5"
+                type="submit"
+              >
+                Upload
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% include 'main/footer.html' %}
+  </body>
+</html>

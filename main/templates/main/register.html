@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Registration Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@2.2.7/dist/tailwind.min.css"
+    />
+  </head>
+  <body class="bg-gray-200">
+    {{ error }}
+    <div class="absolute top-0 right-0 pb-2">
+      <div class="bg-blue-500 rounded px-4 py-2 mt-3 mr-3">
+        <a href="{% url 'main:login' %}">
+          <span class="ty font-bold">Login</span>
+        </a>
+      </div>
+    </div>
+    <div class="flex justify-center items-center h-20 mt-4">
+      <h1 class="text-2xl font-bold mt-6 sd:text-4xl">
+        Replit x ACM Codeathon
+      </h1>
+    </div>
+    <div class="container max-w-xl mx-auto mt-4 px-4">
+      <div class="bg-white shadow-lg rounded-lg px-8 py-6">
+        <h1 class="text-xl font-bold mb-4 text-center">Registration Form</h1>
+        <form method="POST">
+          {% csrf_token %}
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="name">
+              Name
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Enter your name"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 font-bold mb-2"
+              for="email"
+              type="email"
+              id="email"
+              name="email"
+            >
+              Email
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Enter your gitam email"
+              pattern="[a-zA-Z0-9._%+-]+@gitam\.in"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="reg-no">
+              Registration Number
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="reg-no"
+              name="regno"
+              type="text"
+              placeholder="Enter your registration number"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="course">
+              Course
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="course"
+              name="course"
+              type="text"
+              placeholder="Eg. B.Tech, BCA etc."
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="branch">
+              Branch
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="branch"
+              name="branch"
+              type="text"
+              placeholder="Eg. CSE, ECE etc. "
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="year">
+              Year
+            </label>
+            <select
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="year"
+              name="year"
+            >
+              <option value="">Select a year</option>
+              {% for year in years %}
+              <option value="{{ year }}">{{ year }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="flex items-center justify-center">
+            <button
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="Submit"
+            >
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
